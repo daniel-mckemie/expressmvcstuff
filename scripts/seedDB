@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+// grab everything from the models, including the DB connection
+const { User, Color, db } = require('../models');
+const colors = require('../data/colors');
+const users = require('../data/users');
+
+
+(async () => {
+  // insert colors
+  await Color.bulkCreate(colors);
+
+  // first insert the houses
+  await User.bulkCreate(users);
+
+  db.close();
+})();
+

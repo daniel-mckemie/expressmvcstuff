@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+// get the db connection from Sequelize
+const { db } = require('../models');
+
+// async call (since we're awaiting a promise)
+(async () => {
+  await db.sync({ force: true });
+  db.close();
+})();
